@@ -7,7 +7,7 @@ port = 8787
 local_protocol = "http"
 
 [env.vars]
-CUSTOM_DOMAIN = "$(CUSTOM_DOMAIN)"
+CUSTOM_DOMAIN = "$CUSTOM_DOMAIN"
 
 [env.dev.vars]
 MODE = "debug"
@@ -16,13 +16,13 @@ TARGET_UPSTREAM = "https://registry-1.docker.io"
 [env.production]
 name = "cloudflare-docker-proxy"
 routes = [
-  { pattern = "docker.$(CUSTOM_DOMAIN)", custom_domain = true },
-  { pattern = "quay.$(CUSTOM_DOMAIN)", custom_domain = true },
-  { pattern = "gcr.$(CUSTOM_DOMAIN)", custom_domain = true },
-  { pattern = "k8s-gcr.$(CUSTOM_DOMAIN)", custom_domain = true },
-  { pattern = "k8s.$(CUSTOM_DOMAIN)", custom_domain = true },
-  { pattern = "ghcr.$(CUSTOM_DOMAIN)", custom_domain = true },
-  { pattern = "cloudsmith.$(CUSTOM_DOMAIN)", custom_domain = true },
+  { pattern = "docker.$CUSTOM_DOMAIN", custom_domain = true },
+  { pattern = "quay.$CUSTOM_DOMAIN", custom_domain = true },
+  { pattern = "gcr.$CUSTOM_DOMAIN", custom_domain = true },
+  { pattern = "k8s-gcr.$CUSTOM_DOMAIN", custom_domain = true },
+  { pattern = "k8s.$CUSTOM_DOMAIN", custom_domain = true },
+  { pattern = "ghcr.$CUSTOM_DOMAIN", custom_domain = true },
+  { pattern = "cloudsmith.$CUSTOM_DOMAIN", custom_domain = true },
 ]
 
 [env.production.vars]
@@ -31,7 +31,7 @@ TARGET_UPSTREAM = ""
 
 [env.staging]
 name = "cloudflare-docker-proxy-staging"
-route = { pattern = "docker-staging.$(CUSTOM_DOMAIN)", custom_domain = true }
+route = { pattern = "docker-staging.$CUSTOM_DOMAIN", custom_domain = true }
 
 [env.staging.vars]
 MODE = "staging"
